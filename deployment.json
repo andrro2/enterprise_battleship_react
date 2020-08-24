@@ -1,0 +1,39 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "battleship-react",
+    "labels": {
+      "k8s-app": "battleship-react",
+      "build-number": "var_build_number"
+    }
+  },
+  "spec": {
+    "selector": {
+      "matchLabels": {
+        "k8s-app": "battleship-react"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "k8s-app": "battleship-react",
+          "build-number": "var_build_number"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "battleship-react",
+            "image": "andrro/enterprise_battleship_react:latest",
+            "ports": [
+              {
+                "containerPort": 30555
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -13,5 +13,6 @@ RUN npm run build
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/mime.types /etc/nginx/conf.d/mime.types
 EXPOSE 30555
 CMD ["nginx", "-g", "daemon off;"]
